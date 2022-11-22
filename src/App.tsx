@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "antd/dist/reset.css";
+import { Route } from "react-router";
+import { Routes } from "react-router-dom";
+import "./App.css";
+import CarRental from "./ota/Pages/CarRental";
+import FilterPage from "./ota/Pages/FilterPage";
+import OtaFlight from "./ota/Pages/OtaFlight";
+
+import ViewOta from "./ota/Pages/ViewOta";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<ViewOta />}>
+        <Route path="/flight" element={<OtaFlight />} />
+        <Route path="/car-rental" element={<CarRental />} />
+        <Route path="/filter-page" element={<FilterPage></FilterPage>} />
+      </Route>
+    </Routes>
   );
 }
 
