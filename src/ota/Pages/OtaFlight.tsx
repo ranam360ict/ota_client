@@ -11,7 +11,11 @@ import {
   Modal,
   DatePicker,
 } from "antd";
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
+import {
+  ArrowLeftOutlined,
+  ArrowRightOutlined,
+  DownOutlined,
+} from "@ant-design/icons";
 const OtaFlight = () => {
   const [formChange, setFormChange] = useState<boolean>(true);
   const [formChanges, setFormChanges] = useState<string>("");
@@ -103,7 +107,7 @@ const OtaFlight = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  console.log(counters);
+  // console.log(counters);
 
   let countNumber = 0;
   const result = counters?.filter((val: any) => {
@@ -112,8 +116,8 @@ const OtaFlight = () => {
       return val.count === 1;
     }
   });
-  console.log(result);
-  console.log(countNumber);
+  // console.log(result);
+  // console.log(countNumber);
   return (
     <>
       <Typography.Title level={2} style={{ margin: "50px 0" }}>
@@ -150,15 +154,21 @@ const OtaFlight = () => {
           <Col xs={24} sm={24} md={8} lg={8} xl={8} xxl={8}>
             <Form.Item name="adultsModal" label="Select Pax">
               <>
-                <Button block value="default">
+                {/* <Button block value="default">
                   Select pax
+                </Button> */}
+                <Button block value="default" onClick={showModal}>
+                  {countNumber === 1
+                    ? `${countNumber} ${result[0].value}`
+                    : `${countNumber} travellers`}{" "}
+                  <DownOutlined />
                 </Button>
 
                 <Modal
                   title="Basic Modal"
-                  //   visible={isModalOpen}
-                  //   onOk={handleOk}
-                  //   onCancel={handleCancel}
+                  visible={isModalOpen}
+                  onOk={handleOk}
+                  onCancel={handleCancel}
                 >
                   <Row gutter={[0, 8]}>
                     {counters.map((counter: any, i: any) => (
@@ -296,10 +306,9 @@ const OtaFlight = () => {
           </Col>
         </Row>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Search
-            <Link to="/filter-page">Search</Link>
-          </Button>
+          <Link to="/filter-page">
+            <Button type="primary">Search</Button>
+          </Link>
         </Form.Item>
       </Form>
     </>

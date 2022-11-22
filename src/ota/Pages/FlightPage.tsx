@@ -7,15 +7,19 @@ import {
   Collapse,
   Checkbox,
   Slider,
+  Select,
+  Tabs,
 } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChartLine,
-  faCircleExclamation,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { RiseOutlined } from "@ant-design/icons";
+import FlightCheapest from "./FlightCheapest";
+import FlightQuickest from "./FlightQuickest";
+import FlightBest from "./FlightBest";
+
 const { Panel } = Collapse;
-const { Header, Sider, Content } = Layout;
-const FilterPage = () => {
+const { Header, Sider } = Layout;
+const FlightPage = () => {
   return (
     <>
       <Layout>
@@ -33,7 +37,7 @@ const FilterPage = () => {
               </Typography.Text>
             </Col>
             <Col style={{ display: "flex", alignItems: "center" }}>
-              <FontAwesomeIcon icon={faChartLine} />
+              <RiseOutlined />
             </Col>
           </Row>
           <Typography.Text>
@@ -205,14 +209,124 @@ const FilterPage = () => {
             </Panel>
           </Collapse>
           <Divider />
+          <Collapse bordered={false} ghost defaultActiveKey={["1"]}>
+            <Panel header="Transporation type" key="1">
+              <Row gutter={16}>
+                <Checkbox value="a" checked={true} /> <Col>{"Flight"}</Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Checkbox value="a" />
+                <Col>{"Flight+buses Tk 213,5"}</Col>
+              </Row>
+            </Panel>
+          </Collapse>
+          <Divider />
+          <Collapse bordered={false} ghost>
+            <Panel header="Duration" key="1">
+              <Row>
+                <Typography.Text>Flight leg</Typography.Text>
+                <Typography.Text>16h 15m 53h 40m</Typography.Text>
+              </Row>
+              <Slider range defaultValue={[20, 50]} />
+              <Row>
+                <Typography.Text>Layover</Typography.Text>
+                <Typography.Text>0h 40m 23h 55m</Typography.Text>
+              </Row>
+              <Slider range defaultValue={[20, 50]} />
+            </Panel>
+          </Collapse>
+          <Divider />
+          {/* sort */}
+          <Typography.Title level={5}>Sort</Typography.Title>
+          <Select
+            defaultValue="Recommended"
+            style={{ width: "100%" }}
+            // onChange={handleChange}
+            options={[
+              {
+                value: "jack",
+                label: "Chapest",
+              },
+              {
+                value: "lucy",
+                label: "Recommended",
+              },
+
+              {
+                value: "Yiminghe",
+                label: "Quickest",
+              },
+              {
+                value: "Yiminghe",
+                label: "Missing String [Sort_DROP_DOWN_COW_A]",
+              },
+              {
+                value: "Yiminghe",
+                label: "Earliest take-off (DFW)",
+              },
+            ]}
+          />
+          {/* BOOKING SITES */}
+          <Collapse bordered={false} ghost defaultActiveKey={["1"]}>
+            <Panel header="Booking sites" key="1">
+              <Row gutter={16}>
+                <Checkbox value="a" /> <Col>{"Airlines only"}</Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Checkbox value="a" checked={true} />{" "}
+                <Col>{"Air Canada Tk 245,65"}</Col>
+              </Row>
+              <Row gutter={16}>
+                <Checkbox value="a" checked={true} />{" "}
+                <Col>{"Air France Tk 234,867"}</Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Checkbox value="a" checked={true} />{" "}
+                <Col>{"American Ai TK 435,43"}</Col>
+              </Row>
+              <Row gutter={16}>
+                <Checkbox value="a" checked={true} />{" "}
+                <Col>{"British Air TK 857,35"}</Col>
+              </Row>
+              <Row gutter={16}>
+                <Checkbox value="a" checked={true} />{" "}
+                <Col>{" BudgetAir  TK 5322,34"}</Col>
+              </Row>
+              <Row gutter={16}>
+                <Checkbox value="a" /> <Col>{"ChatDeal Tk 1296,75"}</Col>
+              </Row>
+            </Panel>
+          </Collapse>
+          <Divider />
         </Sider>
         <Layout>
-          <Header>Header</Header>
-          <Content>content</Content>
+          <Header
+            style={{
+              backgroundColor: "white",
+              padding: "5px",
+              marginLeft: "15px",
+            }}
+          >
+            <Tabs defaultActiveKey="1">
+              <Tabs.TabPane tab="Cheapest (Tk 118,843)" key="1">
+                <FlightCheapest></FlightCheapest>
+              </Tabs.TabPane>
+
+              <Tabs.TabPane tab="Best (Tk 127,821)" key="2">
+                <FlightBest></FlightBest>
+              </Tabs.TabPane>
+              <Tabs.TabPane tab="Quickest (Tk 215,528)" key="3">
+                <FlightQuickest></FlightQuickest>
+              </Tabs.TabPane>
+            </Tabs>
+          </Header>
         </Layout>
       </Layout>
     </>
   );
 };
 
-export default FilterPage;
+export default FlightPage;
