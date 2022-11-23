@@ -13,10 +13,11 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<ViewOta />}>
-        <Route path="/flight" element={<OtaFlight />} />
-        <Route path="/car-rental" element={<CarRental />} />
-        <Route path="/filter-page" element={<FlightPage />} />
-        <Route path="/traveller-info" element={<TravellerInfo />} />
+        <Route index element={<OtaFlight />} />
+        <Route path="flight" element={<OtaFlight />} />
+        <Route path="car-rental" element={<CarRental />} />
+        <Route path="filter-page" element={<FlightPage />} />
+        <Route path="traveller-info" element={<TravellerInfo />} />
       </Route>
     </Routes>
   );

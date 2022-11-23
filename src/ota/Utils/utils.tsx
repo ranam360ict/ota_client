@@ -32,8 +32,8 @@ export const menuItem: ItemType[] = [
     label: (
       <>
         {" "}
-        <FontAwesomeIcon icon={faCar} />
-        <Link to="/car-rental"> Car Rentals</Link>
+        <FontAwesomeIcon icon={faCar} /> Car Rentals
+        {/* <Link to="/car-rental"> Car Rentals</Link> */}
       </>
     ),
   },
