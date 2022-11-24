@@ -6,6 +6,7 @@ import {
   faCar,
   faMagnet,
   faFlag,
+  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 export const menuItem: ItemType[] = [
@@ -61,6 +62,16 @@ export const menuItem: ItemType[] = [
       <>
         {" "}
         <FontAwesomeIcon icon={faFlag} /> Tk
+      </>
+    ),
+  },
+  {
+    key: 7,
+    label: (
+      <>
+        {" "}
+        <FontAwesomeIcon icon={faUserPlus} /> Register
+        <Link to="/register"></Link>
       </>
     ),
   },

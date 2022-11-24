@@ -106,10 +106,10 @@ const TravellerInfo = () => {
                       },
                     ]}
                   >
-                    <Row gutter={10}>
+                    <Row gutter={3}>
                       <Col span={12}>
                         <Select
-                          defaultValue="Select a gender"
+                          defaultValue="MONTH"
                           options={[
                             {
                               value: "JANUARY",
@@ -146,7 +146,7 @@ const TravellerInfo = () => {
                         <Input placeholder="DD" />
                       </Col>
                       <Col span={6}>
-                        <Input placeholder="YY" />
+                        <Input placeholder="YYYY" />
                       </Col>
                     </Row>
                   </Form.Item>
